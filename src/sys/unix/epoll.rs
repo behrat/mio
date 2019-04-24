@@ -141,11 +141,6 @@ fn ioevent_to_epoll(interest: Ready, opts: PollOpt) -> u32 {
         kind |= EPOLLOUT;
     }
 
-    if UnixReady::from(interest).is_hup() {
-        kind |= EPOLLRDHUP;
-    }
-
-
     if UnixReady::from(interest).is_priority() {
         kind |= EPOLLPRI;
     }
